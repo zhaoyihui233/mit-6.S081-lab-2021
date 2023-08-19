@@ -1,0 +1,5 @@
+set auto-load safe-path /
+set confirm off
+set architecture riscv:rv64
+set riscv use-compressed-breakpoints yes
+target remote localhost:26000

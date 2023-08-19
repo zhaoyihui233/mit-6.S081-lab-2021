@@ -1,0 +1,7 @@
+Why are there missing keys with 2 threads, but not with 1 thread? 
+Identify a sequence of events with 2 threads that can lead to a key being missing. 
+Submit your sequence with a short explanation in answers-thread.txt
+(译：为什么两个线程都丢失了键，而不是一个线程？确定可能导致键丢失的具有2个线程的事件序列。在answers-thread.txt中提交您的序列和简短解释。)
+答：因为insert函数不是原子级操作，所以当两个线程正好都要在同一个bucket插入新值，且正好执行到insert函数时，先执行insert
+插入的键值对总会被后运行insert插入的键值对覆盖。
+所以，当两个线程都想查找前一个键值对时，它们都找不到，于是missing相同数量的键值对。
